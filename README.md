@@ -4,25 +4,28 @@
 
 1. Compile and install **fd**
 ```shell
-yum install git
+yum remove rust -y
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"
+yum install git cargo -y
 git clone https://github.com/sharkdp/fd.git
 pushd fd
-yum install cargo
-cargo update -p clap_complete@4.4.9 --precise ver
-cargo update -p clap_complete@4.4.9 --precise
 cargo update -p clap_complete@4.4.9
 cargo update -p anstyle-parse@0.2.2
 cargo update -p anstyle@1.0.4
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source "$HOME/.cargo/env"
 cargo build --release
 cp target/release/fd /usr/bin/
 cp target/release/fd /usr/bin/fd-find
-popd ../
-
-
+popd
 ```
 
+2. Install from my repo:
+```shell
+git clone https://github.com/pedrodparkes/ansible-role-zsh.git
+yum install python3-pip -y
+pip3 install ansible
+ansible-playbook -i "localhost," -c local -K ansible-role-zsh/playbook.yaml
+```
 
 
 [![Build Status](https://travis-ci.org/viasite-ansible/ansible-role-zsh.svg?branch=master)](https://travis-ci.org/viasite-ansible/ansible-role-zsh)
