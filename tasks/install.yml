@@ -22,6 +22,14 @@
   become: yes
   when: not (zsh_user == 'root' and ansible_os_family == 'Darwin')
 
+- name: Copy fd package to /usr/bin/fdfind
+  copy:
+    src: "files/fd-centos"
+    dest: /usr/bin/fdfind
+    mode: +x
+  become: yes
+  when: not (zsh_user == 'root' and ansible_os_family == 'Darwin')
+
 - name: Install zsh, git, wget
   package:
     name:
