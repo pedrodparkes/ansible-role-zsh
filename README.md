@@ -2,7 +2,16 @@
 
 #### CentOS, Amazon Linux 2, Amazon Linux 3 Setup:
 
-1. Compile and install **fd**
+1. Install from my repo:
+```shell
+git clone https://github.com/pedrodparkes/ansible-role-zsh.git
+yum install python3-pip -y
+pip3 install ansible
+ansible-playbook -i "localhost," -c local -K ansible-role-zsh/playbook.yaml
+```
+
+
+2. If installation fails, install **fd** (don't forget to comment it out in file: tasks/install.yml)
 ```shell
 yum remove rust -y
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -18,15 +27,6 @@ cp target/release/fd /usr/bin/
 cp target/release/fd /usr/bin/fd-find
 popd
 ```
-
-2. Install from my repo:
-```shell
-git clone https://github.com/pedrodparkes/ansible-role-zsh.git
-yum install python3-pip -y
-pip3 install ansible
-ansible-playbook -i "localhost," -c local -K ansible-role-zsh/playbook.yaml
-```
-
 
 [![Build Status](https://travis-ci.org/viasite-ansible/ansible-role-zsh.svg?branch=master)](https://travis-ci.org/viasite-ansible/ansible-role-zsh)
 
