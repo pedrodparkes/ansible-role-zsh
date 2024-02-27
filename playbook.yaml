@@ -1,0 +1,12 @@
+- hosts: all
+  vars:
+    zsh_antigen_bundles_extras:
+      - nvm
+      - joel-porquet/zsh-dircolors-solarized
+    zsh_autosuggestions_bind_key: "^U"
+  roles:
+    - name: Local ansible module
+      # Replace '/path/to/local/module' with the actual path to your local directory containing the Ansible module
+      role:
+        name: viasite-ansible.zsh
+        src: /home/ec2-user/ansible-role-zsh

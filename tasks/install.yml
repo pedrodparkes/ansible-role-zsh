@@ -6,13 +6,12 @@
   become: yes
   when: ansible_os_family != 'Darwin'
 
-- name: Install zsh, git, wget, fd-find
+- name: Install zsh, git, wget
   package:
     name:
       - zsh
       - git
       - wget
-      - fd-find
     state: present
   # brew don't work from root user on macOS
   become: yes

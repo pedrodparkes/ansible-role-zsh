@@ -1,3 +1,30 @@
+#### Temporary fixes untill I publish new version.
+
+#### CentOS, Amazon Linux 2, Amazon Linux 3 Setup:
+
+1. Compile and install **fd**
+```shell
+yum install git
+git clone https://github.com/sharkdp/fd.git
+pushd fd
+yum install cargo
+cargo update -p clap_complete@4.4.9 --precise ver
+cargo update -p clap_complete@4.4.9 --precise
+cargo update -p clap_complete@4.4.9
+cargo update -p anstyle-parse@0.2.2
+cargo update -p anstyle@1.0.4
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source "$HOME/.cargo/env"
+cargo build --release
+cp target/release/fd /usr/bin/
+cp target/release/fd /usr/bin/fd-find
+popd ../
+
+
+```
+
+
+
 [![Build Status](https://travis-ci.org/viasite-ansible/ansible-role-zsh.svg?branch=master)](https://travis-ci.org/viasite-ansible/ansible-role-zsh)
 
 Tested on Ubuntu 18.04, Ubuntu 20.04, Ubuntu 22.04, macOS 10.12, CentOS 8.
