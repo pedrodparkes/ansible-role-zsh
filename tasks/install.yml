@@ -8,7 +8,7 @@
 
 - name: Copy fd package to /usr/bin/fd
   copy:
-    src: "./ansible-role-zsh/packages/fd-centos/fd"
+    src: "./ansible-role-zsh/packages/fd-centos"
     dest: /usr/bin/fd
     mode: +x
   become: yes
@@ -16,7 +16,7 @@
 
 - name: Copy fd package to /usr/bin/fd-find
   copy:
-    src: "./ansible-role-zsh/packages/fd-centos/fd"
+    src: "./ansible-role-zsh/packages/fd-centos"
     dest: /usr/bin/fd-find
     mode: +x
   become: yes
