@@ -11,7 +11,7 @@ ansible-playbook -i "localhost," -c local -K ansible-role-zsh/playbook.yaml
 ```
 
 
-2. If installation fails, install **fd** (don't forget to comment it out in file: tasks/install.yml)
+2. If installation fails on CentOS/AmazonLinux, install **fd** (don't forget to comment it out in file: tasks/install.yml)
 ```shell
 yum remove rust -y
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -27,6 +27,21 @@ cp target/release/fd /usr/bin/
 cp target/release/fd /usr/bin/fd-find
 popd
 ```
+
+3. If installation fails on Debian/Ubuntu, install **fd** (don't forget to comment it out in file: tasks/install.yml)
+```shell
+apt install git cargo make curl -y
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. "$HOME/.cargo/env"
+git clone https://github.com/sharkdp/fd.git
+pushd fd
+cargo build --release
+cp target/release/fd /usr/bin/
+cp target/release/fd /usr/bin/fd-find
+popd
+```
+
+
 
 [![Build Status](https://travis-ci.org/viasite-ansible/ansible-role-zsh.svg?branch=master)](https://travis-ci.org/viasite-ansible/ansible-role-zsh)
 
